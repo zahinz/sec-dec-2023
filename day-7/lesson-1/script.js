@@ -15,7 +15,7 @@
 // let testValue = 0; // number
 // let testValue = null; // null
 // let testValue = undefined; // undefined
-// let testValue = NaN; // NaN
+// let testValue = NaN; // Not a Number
 
 // console.log(testValue);
 

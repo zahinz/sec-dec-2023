@@ -39,6 +39,7 @@ let greeting = myFunction3("Johan");
 console.log(greeting);
 
 // 3. function with return value
+// return statememt is used to transfer a value from function scope to global scope
 function myFunction4(name) {
   return "Salam " + name;
 }

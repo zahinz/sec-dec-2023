@@ -29,8 +29,8 @@ main {
   background: yellow;
   border: 1px solid gray;
   border-radius: 100%;
-  top: 0;
-  left: 0;
+  /* top: 0;
+  left: 0; */
 }
 
 .grid {

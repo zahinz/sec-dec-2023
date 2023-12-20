@@ -4,10 +4,6 @@ let buttonRight = document.querySelector("#btnRight");
 let pacman = document.querySelector("#pacman");
 
 // pacman value
-let pacmanTop = pacman.style.top;
-let pacmanLeft = pacman.style.left;
-
-console.log(pacmanTop);
 
 //  detect mouse click
 
@@ -21,7 +17,11 @@ function buttonUpClick() {
 
 function buttonDownClick() {
   console.log("button down");
-  pacman.style.top = "100px";
+  // get the current value of the top
+  // https://stackoverflow.com/questions/4860244/how-to-delete-px-from-245px
+  let pacmanTop = parseInt(pacman.style.top, 10);
+  // change the value of the top by 100px increment
+  pacman.style.top = pacmanTop + 100 + "px";
 }
 
 // 2. addEventListener
@@ -33,6 +33,7 @@ function buttonLeftClick() {
 }
 function buttonRightClick() {
   console.log("button right");
+  let pacmanLeft = parseInt(pacman.style.left, 10);
   pacman.style.left = "100px";
 }
 

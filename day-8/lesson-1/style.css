@@ -27,6 +27,7 @@ main {
   width: 98px;
   height: 98px;
   background: yellow;
+  border: 1px solid gray;
   border-radius: 100%;
   top: 0;
   left: 0;
@@ -35,5 +36,6 @@ main {
 .grid {
   width: 100px;
   height: 100px;
-  outline: 1px solid black;
+  outline: 1px solid gray;
+  background-color: white;
 }

@@ -13,6 +13,8 @@ let pacman = document.querySelector("#pacman");
 
 function buttonUpClick() {
   console.log("button up");
+  let pacmanTop = parseInt(pacman.style.top, 10);
+  pacman.style.top = pacmanTop - 100 + "px";
 }
 
 function buttonDownClick() {
@@ -30,13 +32,35 @@ function buttonDownClick() {
 // declare a function
 function buttonLeftClick() {
   console.log("button left");
+  let pacmanLeft = parseInt(pacman.style.left, 10);
+  pacman.style.left = pacmanLeft - 100 + "px";
 }
 function buttonRightClick() {
   console.log("button right");
   let pacmanLeft = parseInt(pacman.style.left, 10);
-  pacman.style.left = "100px";
+  pacman.style.left = pacmanLeft + 100 + "px";
 }
 
 // addEventListener
 buttonLeft.addEventListener("click", buttonLeftClick);
 buttonRight.addEventListener("click", buttonRightClick);
+
+// add keydown event listener to move the pacman
+window.addEventListener("keydown", function (event) {
+  if (event.key === "ArrowDown") {
+    console.log("ArrowDown is pressed");
+    buttonDownClick();
+  }
+  if (event.key === "ArrowUp") {
+    console.log("ArrowUp is pressed");
+    buttonUpClick();
+  }
+  if (event.key === "ArrowLeft") {
+    console.log("ArrowLeft is pressed");
+    buttonLeftClick();
+  }
+  if (event.key === "ArrowRight") {
+    console.log("ArrowRight is pressed");
+    buttonRightClick();
+  }
+});

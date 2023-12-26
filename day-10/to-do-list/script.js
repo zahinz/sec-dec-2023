@@ -32,6 +32,7 @@ function formSubmitted(event) {
   let value = formData.get("todo");
   console.log(value);
 
+  // APPEND CHILD ELEMENTS INTO PARENT ELEMENTS
   // 3c. create a new list item
   let newListItem = document.createElement("li");
   // insert the value of the input inside the list item
@@ -52,3 +53,5 @@ formDOM.addEventListener("submit", formSubmitted);
 // - clear the input after the form is submitted
 // - prevent empty values from being added to the list
 // - add a delete button to each list item
+// - add a delete all button
+// - enhance the styling of the list

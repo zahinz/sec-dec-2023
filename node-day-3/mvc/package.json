@@ -1,0 +1,15 @@
+{
+  "name": "mnv-node-js",
+  "version": "1.0.0",
+  "description": "my first node js mvc application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "author": "dev.huxnet",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

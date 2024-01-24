@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import pool from "../database/connection.js";
 
 export async function register(req, res) {
@@ -42,10 +43,19 @@ export async function login(req, res) {
       return res.status(401).json({ message: "Password incorrect" });
     }
 
+    // if password matches, create a token using jsonwebtoken
+    const userData = {
+      id: response.rows[0].id,
+      username: response.rows[0].username,
+      email: response.rows[0].email,
+    };
+    const token = jwt.sign(userData, "superDuperSecret");
+
     // if password matches, return user object
     const apiResponse = {
       message: "Login successful",
       user: response.rows[0],
+      token: token,
     };
     res.status(200).json(apiResponse);
   } catch (error) {
@@ -54,13 +64,17 @@ export async function login(req, res) {
 }
 
 // list all users
+// secured routes
 // route : GET /users
 
 // get user by id
+// secured routes
 // route : GET /users/:id
 
 // update user by id
+// secured routes and only the user can update their own data
 // route : PUT /users/:id
 
 // delete user by id
+// secured routes and only the user can delete their own data
 // route : DELETE /users/:id

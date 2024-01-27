@@ -23,7 +23,8 @@ export async function createUserTable() {
 // table todos
 export async function createTodoTable() {
   try {
-    const query = `
+    // first initiliaze the user table
+    const queryInit = `
     CREATE TABLE IF NOT EXISTS "Todos" (
         id SERIAL PRIMARY KEY,
         title TEXT,
@@ -31,7 +32,16 @@ export async function createTodoTable() {
         user_id INTEGER REFERENCES "Users"(id)
     );
 `;
-    await pool.query(query);
+    // alter table to set text and description to not null and create new column status with default value false
+    const queryAlter = `
+    ALTER TABLE "Todos"
+    ALTER COLUMN title SET NOT NULL,
+    ALTER COLUMN description SET NOT NULL,
+    ADD COLUMN IF NOT EXISTS status BOOLEAN DEFAULT false
+    `;
+
+    await pool.query(queryInit);
+    await pool.query(queryAlter);
     console.log("Todo table created successfully");
   } catch (error) {
     console.log(error);

@@ -10,7 +10,7 @@ import fourOhFour from "./middleware/fourOhFour";
 import root from "./routes/root";
 import upload from "./routes/upload";
 import { dbInit } from "./database/connection";
-import image from "./routes/image";
+import file from "./routes/file";
 
 const app = express();
 
@@ -36,7 +36,7 @@ dbInit();
 // Apply routes before error handling
 app.use("/", root);
 app.use("/upload", upload);
-app.use("/images", image);
+app.use("/files", file);
 
 // Apply error handling last
 app.use(fourOhFour);

@@ -1,0 +1,26 @@
+import { ButtonGhost, ButtonOutline, ButtonSolid } from "./components/Button";
+
+function App() {
+  function handleClick() {
+    alert("Hello World");
+  }
+  return (
+    <div>
+      <h1>Hello World</h1>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          padding: "0 1rem",
+        }}
+      >
+        <ButtonSolid text="hello world" onClick={handleClick} />
+        <ButtonOutline text="Register" />
+        <ButtonGhost text="Link" />
+      </div>
+    </div>
+  );
+}
+
+export default App;

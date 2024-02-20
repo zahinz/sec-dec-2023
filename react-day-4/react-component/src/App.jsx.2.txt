@@ -1,0 +1,72 @@
+import { ButtonSolid } from "./components/Button";
+import Card from "./components/Card";
+
+// render interation of Card component
+const DATA = [
+  {
+    title: "hello world 1",
+    description: "test 123 hello 1",
+    text: "My name is Zahin",
+    enable: false,
+  },
+  {
+    title: "hello world 2",
+    description: "test 123 hello 2",
+    text: "My name is Arif",
+    enable: true,
+  },
+  {
+    title: "hello world 3",
+    description: "test 123 hello 3",
+    text: "My name is Abang",
+    enable: true,
+  },
+  {
+    title: "hello world 4",
+    description: "test 123 hello 4",
+    text: "My name is Aqif",
+    enable: false,
+  },
+  {
+    title: "hello world 5",
+    description: "test 123 hello 5",
+    text: "My name is Mus",
+    enable: true,
+  },
+];
+
+function App() {
+  function handleClick() {
+    alert("Hello World");
+  }
+  return (
+    <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          padding: "1rem",
+        }}
+      >
+        {DATA.map(function (element, index, array) {
+          if (!element.enable) {
+            return null;
+          }
+          return (
+            <Card
+              // key is important for react to keep track of the elements
+              key={index}
+              title={element.title}
+              description={element.description}
+              text={element.text}
+            />
+          );
+        })}
+        <ButtonSolid text="hello world" onClick={handleClick} />
+      </div>
+    </div>
+  );
+}
+
+export default App;

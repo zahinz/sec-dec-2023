@@ -64,6 +64,7 @@ function App() {
           <h1 style={{ position: "absolute", top: 60, left: 0 }}>Text 3</h1>
         </div>
         <ButtonSolid text="Randomise" onClick={handleRandomise} />
+        <ButtonSolid text="Save as JPEG" onClick={handleRandomise} />
         <input type="text" onChange={handleTextChange} />
       </div>
     </div>

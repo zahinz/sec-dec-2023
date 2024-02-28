@@ -151,6 +151,7 @@ export default function App() {
           />
         </ScrollView> */}
         <ScrollView
+          style={{ marginHorizontal: -16, paddingHorizontal: 16 }}
           showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -175,8 +176,6 @@ function MessageCard({ image, name, message }) {
         borderBottomWidth: 1,
         borderBottomColor: "#f0f0f0",
         paddingVertical: 8,
-        paddingHorizontal: 16,
-        marginHorizontal: -16,
       }}
     >
       <Image

@@ -1,15 +1,22 @@
 import { Text, SafeAreaView, View, Dimensions } from "react-native";
-import { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { useForm } from "react-hook-form";
 
 function HomeScreen({ navigation }) {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      email: "",
+      username: "",
+      password: "",
+    },
+  });
   function navigateToLogin() {
     navigation.navigate("Login");
+  }
+  function onSubmit(data) {
+    //   api call to register user
+    console.log(data);
   }
 
   const screenWidth = Dimensions.get("screen").width;
@@ -33,12 +40,12 @@ function HomeScreen({ navigation }) {
           Welcome to Bitly Mobile
         </Text>
         <View style={{ gap: 8 }}>
-          <Input label="Email" value={email} setValue={setEmail} />
-          <Input label="Username" value={username} setValue={setUsername} />
-          <Input label="Password" value={password} setValue={setPassword} />
+          <Input label="Email" control={control} name="email" />
+          <Input label="Username" control={control} name="username" />
+          <Input label="Password" control={control} name="password" />
         </View>
         <View>
-          <Button>Register</Button>
+          <Button onPress={handleSubmit(onSubmit)}>Register</Button>
           <Button variant="ghost" onPress={navigateToLogin}>
             Sign in as existing user
           </Button>

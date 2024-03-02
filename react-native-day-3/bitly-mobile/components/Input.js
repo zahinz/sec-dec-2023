@@ -1,7 +1,7 @@
 import { useController } from "react-hook-form";
 import { Text, TextInput, View } from "react-native";
 
-function Input({ label, name, control }) {
+function Input({ label, name, control, rules }) {
   const { field } = useController({
     control,
     defaultValue: "",
@@ -21,6 +21,7 @@ function Input({ label, name, control }) {
           borderRadius: 8,
         }}
       />
+      {/* <Text style={{ color: "red" }}>Hello</Text> */}
     </View>
   );
 }

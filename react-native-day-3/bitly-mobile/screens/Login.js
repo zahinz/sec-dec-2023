@@ -2,10 +2,20 @@ import { Text, SafeAreaView, View, Dimensions } from "react-native";
 import { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { useForm } from "react-hook-form";
 
 function LoginScreen({ navigation }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      identifier: "",
+      password: "",
+    },
+  });
+
+  function onSubmit(data) {
+    //   api call to login user
+    console.log(data);
+  }
 
   const screenWidth = Dimensions.get("screen").width;
 
@@ -32,11 +42,11 @@ function LoginScreen({ navigation }) {
           Welcome to Bitly Mobile
         </Text>
         <View style={{ gap: 8 }}>
-          <Input label="Email" value={email} setValue={setEmail} />
-          <Input label="Password" value={password} setValue={setPassword} />
+          <Input label="Email" control={control} name="identifier" />
+          <Input label="Password" control={control} name="password" />
         </View>
         <View>
-          <Button>Login</Button>
+          <Button onPress={handleSubmit(onSubmit)}>Login</Button>
           <Button variant="ghost" onPress={navigateToHome}>
             Register as a new user
           </Button>

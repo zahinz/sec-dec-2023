@@ -32,7 +32,7 @@ function LoginScreen({ navigation }) {
     >
       <View
         style={{
-          width: screenWidth * 0.8,
+          width: screenWidth * 0.9,
           paddingHorizontal: 8,
           paddingVertical: 16,
           gap: 16,

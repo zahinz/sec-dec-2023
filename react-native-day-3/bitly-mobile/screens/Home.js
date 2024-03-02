@@ -2,6 +2,7 @@ import { Text, SafeAreaView, View, Dimensions } from "react-native";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { useForm } from "react-hook-form";
+import Toast from "react-native-toast-message";
 
 function HomeScreen({ navigation }) {
   const { control, handleSubmit } = useForm({
@@ -17,6 +18,23 @@ function HomeScreen({ navigation }) {
   function onSubmit(data) {
     //   api call to register user
     console.log(data);
+
+    // example server response
+    const status = 400;
+
+    if (status === 200) {
+      Toast.show({
+        type: "success",
+        text1: "User registered successfully!",
+        position: "bottom",
+      });
+    } else {
+      Toast.show({
+        type: "error",
+        text1: "Username already exists!",
+        position: "bottom",
+      });
+    }
   }
 
   const screenWidth = Dimensions.get("screen").width;
@@ -30,7 +48,7 @@ function HomeScreen({ navigation }) {
     >
       <View
         style={{
-          width: screenWidth * 0.8,
+          width: screenWidth * 0.9,
           paddingHorizontal: 8,
           paddingVertical: 16,
           gap: 16,

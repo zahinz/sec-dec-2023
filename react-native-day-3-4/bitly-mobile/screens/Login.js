@@ -4,8 +4,10 @@ import Button from "../components/Button";
 import { useForm } from "react-hook-form";
 import Toast from "react-native-toast-message";
 import { loginUser } from "../api";
+import useToken from "../hook/useToken";
 
 function LoginScreen({ navigation }) {
+  const { storeToken } = useToken();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       identifier: "",
@@ -17,7 +19,10 @@ function LoginScreen({ navigation }) {
     try {
       const response = await loginUser(data);
       // promise is resolved
-      console.log(response.data);
+      const jwt = response.data.jwt;
+      // Save the jwt token in the AsyncStorage using the storeToken helper function from useToken
+      await storeToken(jwt);
+
       Toast.show({
         type: "success",
         text1: "User logged in successfully!",

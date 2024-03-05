@@ -4,8 +4,11 @@ import Button from "../components/Button";
 import { useForm } from "react-hook-form";
 import Toast from "react-native-toast-message";
 import { registerUser } from "../api";
+import useToken from "../hook/useToken";
 
 function HomeScreen({ navigation }) {
+  const { token } = useToken();
+
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: "",
@@ -13,9 +16,15 @@ function HomeScreen({ navigation }) {
       password: "",
     },
   });
+
   function navigateToLogin() {
     navigation.navigate("Login");
   }
+
+  function navigateToDashboard() {
+    navigation.navigate("Dashboard");
+  }
+
   async function onSubmit(data) {
     try {
       const response = await registerUser(data);
@@ -72,6 +81,11 @@ function HomeScreen({ navigation }) {
           <Button variant="ghost" onPress={navigateToLogin}>
             Sign in as existing user
           </Button>
+          {token && (
+            <Button variant="outline" onPress={navigateToDashboard}>
+              Go to Dashboard
+            </Button>
+          )}
         </View>
       </View>
     </SafeAreaView>

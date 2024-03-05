@@ -3,6 +3,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import { useForm } from "react-hook-form";
 import Toast from "react-native-toast-message";
+import { registerUser } from "../api";
 
 function HomeScreen({ navigation }) {
   const { control, handleSubmit } = useForm({
@@ -15,25 +16,29 @@ function HomeScreen({ navigation }) {
   function navigateToLogin() {
     navigation.navigate("Login");
   }
-  function onSubmit(data) {
-    //   api call to register user
-    console.log(data);
-
-    // example server response
-    const status = 400;
-
-    if (status === 200) {
+  async function onSubmit(data) {
+    try {
+      const response = await registerUser(data);
+      console.log(response.data);
       Toast.show({
         type: "success",
         text1: "User registered successfully!",
         position: "bottom",
       });
-    } else {
-      Toast.show({
-        type: "error",
-        text1: "Username already exists!",
-        position: "bottom",
-      });
+    } catch (error) {
+      const e = error.response.data;
+      if (Array.isArray(e.err.errors)) {
+        const combinedMessages = e.err.errors
+          .map((error) => error.msg)
+          .join(". ");
+        // TODO : Toast package is not support for multiple messages and has limited styling options
+        // PLAN : Use a different package for toasts https://www.npmjs.com/package/react-native-toast-notifications
+        Toast.show({
+          type: "error",
+          text1: combinedMessages,
+          position: "bottom",
+        });
+      }
     }
   }
 

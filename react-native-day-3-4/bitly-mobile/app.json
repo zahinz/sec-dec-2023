@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dev.huxnet.bitlymobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +32,12 @@
         "projectId": "73a1c266-8522-49fe-9d4c-260b6faae473"
       }
     },
-    "owner": "dev.huxnet"
+    "owner": "dev.huxnet",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/73a1c266-8522-49fe-9d4c-260b6faae473"
+    }
   }
 }
